@@ -1,5 +1,5 @@
 import logging
-from transformers import AutoTokenizer, AutoModel
+from transformers import AutoTokenizer, AutoModelForCausalLM
 import faiss
 
 logger = logging.getLogger(__name__)
@@ -11,7 +11,7 @@ def load_models(app):
 
     try:
         tokenizer = AutoTokenizer.from_pretrained(model_id)
-        model = AutoModel.from_pretrained(llm_model_id)
+        model = AutoModelForCausalLM.from_pretrained(llm_model_id)
         logger.info(f"Tokenizer and model '{model_id}' loaded successfully.")
     except Exception as e:
         logger.error(f"Error loading tokenizer and model '{model_id}': {e}", exc_info=True)
