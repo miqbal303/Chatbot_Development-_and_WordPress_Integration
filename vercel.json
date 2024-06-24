@@ -1,0 +1,24 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "run.py",
+        "use": "@vercel/python",
+        "config": {
+          "maxLambdaSize": "50mb",
+          "runtime": "python3.10.0"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "run.py"
+      }
+    ],
+    "env": {
+      "MODEL_ID": "sentence-transformers/all-MiniLM-L6-v2",
+      "LLM_MODEL_ID": "gpt2",
+      "EMBEDDING_DIM": "384"
+    }
+  }
