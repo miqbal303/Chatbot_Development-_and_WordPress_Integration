@@ -18,7 +18,7 @@
     ],
     "env": {
       "MODEL_ID": "sentence-transformers/all-MiniLM-L6-v2",
-      "LLM_MODEL_ID": "EleutherAI/gpt-neo-125M",
+      "LLM_MODEL_ID": "distilgpt2",
       "EMBEDDING_DIM": "384"
     }
   }
