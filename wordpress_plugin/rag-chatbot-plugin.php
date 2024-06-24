@@ -20,7 +20,7 @@ function rag_chatbot_handle_query() {
     $query = sanitize_text_field($_POST['query']);
     $context = isset($_POST['context']) ? array_map('sanitize_text_field', $_POST['context']) : array();
 
-    $response = wp_remote_post('https://23e4-103-252-216-191.ngrok-free.app/chat', array(
+    $response = wp_remote_post('https://5fbe-103-252-216-191.ngrok-free.app/chat', array(
         'body' => json_encode(array(
             'query' => $query,
             'context' => $context,
@@ -44,7 +44,7 @@ add_action('wp_ajax_nopriv_rag_chatbot_query', 'rag_chatbot_handle_query');
 // Handle AJAX requests for query suggestions
 function rag_chatbot_suggest_query() {
     $query = sanitize_text_field($_POST['query']);
-    $response = wp_remote_post('https://23e4-103-252-216-191.ngrok-free.app/suggest_query', array(
+    $response = wp_remote_post('https://5fbe-103-252-216-191.ngrok-free.app/suggest_query', array(
         'body' => json_encode(array(
             'query' => $query,
         )),
