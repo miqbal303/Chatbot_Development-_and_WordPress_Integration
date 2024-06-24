@@ -1,6 +1,0 @@
-flask
-transformers
-torch
-faiss-cpu
-numpy==1.26.4
-requests
