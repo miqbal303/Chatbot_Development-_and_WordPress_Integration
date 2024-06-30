@@ -5,8 +5,8 @@
         "src": "run.py",
         "use": "@vercel/python",
         "config": {
-          "maxLambdaSize": "250mb",
-          "runtime": "python3.10.0"
+          "maxLambdaSize": "150mb",
+          "runtime": "python3.10"
         }
       }
     ],
@@ -15,10 +15,6 @@
         "src": "/(.*)",
         "dest": "run.py"
       }
-    ],
-    "env": {
-      "MODEL_ID": "sentence-transformers/all-MiniLM-L6-v2",
-      "LLM_MODEL_ID": "gpt2",
-      "EMBEDDING_DIM": "384"
-    }
+    ]
   }
+  

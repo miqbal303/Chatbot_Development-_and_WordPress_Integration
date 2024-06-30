@@ -1,0 +1,20 @@
+#rag-chatbot-form {
+    margin-bottom: 20px;
+}
+
+#rag-chatbot-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+#rag-chatbot-form input, #rag-chatbot-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+#chatbot-response {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}

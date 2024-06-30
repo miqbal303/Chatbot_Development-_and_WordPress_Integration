@@ -1,27 +1,51 @@
 import logging
-from transformers import AutoTokenizer, AutoModel
-import faiss
+import requests
 
+# Initialize the logger
 logger = logging.getLogger(__name__)
 
 def load_models(app):
-    model_id = app.config['MODEL_ID']
-    llm_model_id = app.config['LLM_MODEL_ID']
-    embedding_dim = app.config['EMBEDDING_DIM']
+    """
+    Load models by setting up a function to get embeddings from a model API.
 
-    try:
-        tokenizer = AutoTokenizer.from_pretrained(model_id)
-        model = AutoModel.from_pretrained(llm_model_id)
-        logger.info(f"Tokenizer and model '{model_id}' loaded successfully.")
-    except Exception as e:
-        logger.error(f"Error loading tokenizer and model '{model_id}': {e}", exc_info=True)
-        raise
+    Args:
+        app (Flask): The Flask application instance.
 
-    try:
-        index = faiss.IndexFlatL2(embedding_dim)
-        logger.info("FAISS index initialized successfully.")
-    except Exception as e:
-        logger.error(f"Error initializing FAISS index: {e}", exc_info=True)
-        raise
+    Returns:
+        function: A function to get embeddings for a given text.
+    """
+    # Retrieve the headers and model API URL from the app configuration
+    headers = app.config['HEADERS']
+    model_api_url = app.config['MODEL_API_URL']
 
-    return tokenizer, model, index
+    def get_embeddings(text):
+        """
+        Get embeddings for a given text by calling the model API.
+
+        Args:
+            text (str): The input text to get embeddings for.
+
+        Returns:
+            dict: The JSON response from the model API containing embeddings.
+
+        Raises:
+            Exception: If the API call fails.
+        """
+        # Prepare the payload for the API request
+        payload = {"inputs": text}
+        logger.debug(f"Payload for model API: {payload}")
+
+        # Make a POST request to the model API
+        response = requests.post(model_api_url, headers=headers, json=payload)
+        logger.debug(f"Response from model API: {response.status_code} {response.text}")
+
+        # Check if the response status code indicates success
+        if response.status_code == 200:
+            logger.info("Successfully retrieved embeddings from model API.")
+            return response.json()
+        else:
+            # Log an error message with the response content
+            logger.error(f"Error calling model API: {response.text}")
+            raise Exception("Failed to get embeddings")
+
+    return get_embeddings
