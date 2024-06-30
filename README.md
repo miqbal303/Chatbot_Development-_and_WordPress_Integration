@@ -41,7 +41,7 @@ The project includes a WordPress plugin to integrate the chatbot.
 To run all tests, use:
 ```bash
 python -m unittest discover -s tests
-
+```
 ## Setup ngrok
 
 ngrok will be used to expose your local development server to the internet for testing purposes. Follow these steps:
@@ -53,11 +53,11 @@ ngrok will be used to expose your local development server to the internet for t
    Authenticate ngrok with your account:
 ```bash
 ngrok config add-authtoken $YOUR_AUTHTOKEN
-
+```
 3. Start ngrok:
    Run ngrok to expose your Flask application (assuming it runs on port 5000):
 ```bash
 ngrok http 5000
-
+```
 
 ngrok will provide a URL (e.g., https://abcd1234.ngrok.io) that you can use to access your local server over the internet.
