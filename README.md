@@ -47,7 +47,7 @@ python -m unittest discover -s tests
 ngrok will be used to expose your local development server to the internet for testing purposes. Follow these steps:
 
 1. Download and Install ngrok:
-   Download ngrok from ngrok.com and install it.
+   Download ngrok from https://ngrok.com and install it.
 
 2. Authenticate ngrok:
    Authenticate ngrok with your account:
