@@ -4,7 +4,7 @@ This directory contains the main application logic for the RAG (Retrieve and Gen
 
 - `__init__.py`: Initializes the Flask application.
 - `config.py`: Configures the application settings.
-- `models.py`: Handles the loading of models and FAISS index.
+- `models.py`: Handles the loading of models
 - `pipeline.py`: Initializes the text generation pipeline.
 - `routes.py`: Defines the API routes for the chatbot.
 - `utils.py`: Contains utility functions for processing queries and fetching WordPress content.
